@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:new_design/main.dart';
+import 'package:new_design/widgets/app_bar.dart';
+import 'package:new_design/widgets/percentage_list.dart';
+
 
 class SavePage extends StatelessWidget {
   @override
@@ -21,55 +23,7 @@ class _SavePageState extends State<_SavePage> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
 
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          height: 70,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> NewDesign()));
-                  } ,
-                  child: Column(
-                    children: [
-                      Icon(Icons.credit_card, size: 30,),
-                      SizedBox(height:5),
-                      Text('Spend')
-                    ],),
-                ),
-                Column(
-                  children: [
-                    Icon(Icons.favorite_border_outlined, size: 30,),
-                    SizedBox(height:5),
-                    Text('Save')
-                  ],),
-                Column(
-                  children: [
-                    Icon(Icons.today, size: 30,),
-                    SizedBox(height:5),
-                    Text('Schedule')
-                  ],),
-                Column(
-                  children: [
-                    Icon(Icons.menu, size: 30,),
-                    SizedBox(height:5),
-                    Text('Menu')
-                  ],),
-  
-                FloatingActionButton(onPressed: (){},
-                  child: Icon(Icons.add, color: Colors.white),
-                  backgroundColor: Colors.green[300],
-                  
-                )
-  
-
-            ],),
-          ),),
-
-      ),
+      bottomNavigationBar: CustomAppBar(),
 
 
       body: SafeArea(
@@ -87,6 +41,8 @@ class _SavePageState extends State<_SavePage> {
                         CircleAvatar(
                           radius:20,
                           backgroundColor: Colors.black,
+                          child: Image(
+                            image: AssetImage("images/head.png"), width:29, height:30),
                         ),
                         SizedBox(height:40),
                         Text("Apartment Savings", style: TextStyle(color: Colors.white)),
@@ -128,6 +84,7 @@ class _SavePageState extends State<_SavePage> {
                        ],
                      ),
                    ),
+
                    Container(                    
                      margin: EdgeInsets.all(25),
                      decoration: BoxDecoration(
@@ -137,89 +94,25 @@ class _SavePageState extends State<_SavePage> {
                      child: Column(
                        crossAxisAlignment: CrossAxisAlignment.start,
                        children: [
-                         Padding(
-                           padding: const EdgeInsets.all(15),
-                           child: Row(
-                             children: [
-                               CircleAvatar(
-                                 radius:15,
-                                 backgroundColor:Colors.purple[100]
-                               ),
-                               SizedBox(width:10),
-                               Column(
-                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                 children: [
-                                 Text("5% of \$2500", style: TextStyle(fontSize: 20)),
-                                 Text("Dec 25", style: TextStyle(fontSize: 20, color: Colors.grey))
-                               ],),
-                               Spacer(),
-                               Text("+125.00", style: TextStyle(fontSize: 20))
-                             ],
-                           ),
+                         PercentageList(
+                           percentage: "5% of \$2500",
+                           value: "+125.00",
                          ),
                          Divider(height: 30,),
-                          Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Row(
-                             children: [
-                               CircleAvatar(
-                                 radius:15,
-                                 backgroundColor:Colors.purple[100]
-                               ),
-                               SizedBox(width:10),
-                               Column(
-                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                 children: [
-                                 Text("5% of \$4500", style: TextStyle(fontSize: 20)),
-                                 Text("Dec 25", style: TextStyle(fontSize: 20, color: Colors.grey))
-                               ],),
-                               Spacer(),
-                               Text("+225.00", style: TextStyle(fontSize: 20))
-                             ],
-                         ),
-                          ),
+                         PercentageList(
+                           percentage: "5% of \$4500",
+                           value: "+225.00",
+                         ), 
                          Divider(height: 30,),
-                          Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Row(
-                             children: [
-                               CircleAvatar(
-                                 radius:15,
-                                 backgroundColor:Colors.purple[100]
-                               ),
-                               SizedBox(width:10),
-                               Column(
-                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                 children: [
-                                 Text("5% of \$1500", style: TextStyle(fontSize: 20)),
-                                 Text("Dec 25", style: TextStyle(fontSize: 20, color: Colors.grey))
-                               ],),
-                               Spacer(),
-                               Text("+75.00", style: TextStyle(fontSize: 20))
-                             ],
+                         PercentageList(
+                           percentage: "5% of \$1500",
+                           value: "+75.00",
                          ),
-                          ),
                          Divider(height: 30,),
-                          Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Row(
-                             children: [
-                               CircleAvatar(
-                                 radius:15,
-                                 backgroundColor:Colors.purple[100]
-                               ),
-                               SizedBox(width:10),
-                               Column(
-                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                 children: [
-                                 Text("5% of \$5500", style: TextStyle(fontSize: 20)),
-                                 Text("Dec 25", style: TextStyle(fontSize: 20, color: Colors.grey))
-                               ],),
-                               Spacer(),
-                               Text("+275.00", style: TextStyle(fontSize: 20))
-                             ],
-                         ),
-                          ),
+                         PercentageList(
+                           percentage: "5% of \$5500",
+                           value: "+275.00",
+                         ), 
                        ],
                       ),
                    )
@@ -230,3 +123,4 @@ class _SavePageState extends State<_SavePage> {
     
   }
 }
+
